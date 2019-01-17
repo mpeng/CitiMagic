@@ -11,7 +11,6 @@ import {
   FlatList,
   WebView
 } from 'react-native';
-import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -26,8 +25,8 @@ export default class HomeScreen extends React.Component {
             <Image
               source={
                 __DEV__
-                  ? require('../assets/images/bridge2logoLong.png')
-                  : require('../assets/images/bridge2logoLong.png')
+                  ? require('./assets/images/bridge2logoLong.png')
+                  : require('./assets/images/bridge2logoLong.png')
               }
               style={styles.welcomeImage}
             />
