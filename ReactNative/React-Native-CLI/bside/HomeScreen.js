@@ -1,4 +1,5 @@
 import React from 'react';
+import converter from 'hex2dec';
 import {
   Image,
   Platform,
@@ -17,6 +18,22 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
+  colors = ['#F0FFF0', '#DCFCF6', '#F1ECFA', '#E8D6D7'];
+
+  state = {
+    data: [
+		  {url: "https://qa.cbgrus.website.epsilon.com/v1/welcome.htm", name: "CitiGR QA 1"},		  
+		  {url: "https://qa.cbgrus.website.epsilon.com/v2/welcome.htm", name: "CitiGR QA 2"},		  
+		  {url: "https://uat.cbgrus.uatglobalrewards.com/v1/welcome.htm", name: "CitiGR UAT 1"},		  
+		  {url: "https://uat.cbgrus.uatglobalrewards.com/v2/welcome.htm", name: "CitiGR UAT 2"},		  
+		  {url: "https://pat.cbgrus.uatglobalrewards.com/welcome.htm", name: "CitiGR PAT"},		  
+		  {url: "https://prduat.cbgrus.uatglobalrewards.com/welcome.htm", name: "CitiGR Prod UAT"},		  
+		  {url: "https://www.citirewards.com/", name: "CitiGR Prod"},		  
+		  {url: "https://catalog.uat.cbgrus.uatglobalrewards.com/apple-gr/pages/login.jsp", name: "Apple UAT"},		  
+		  {url: "https://catalog.pat.cbgrus.uatglobalrewards.com/apple-gr/pages/login.jsp", name: "Apple PAT"},		  
+	]
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -32,18 +49,38 @@ export default class HomeScreen extends React.Component {
             />
           </View>
 
-          
-            {this._maybeRenderDevelopmentModeWarning()}
-          
-
-        
-
+		  <FlatList style={styles.scroll}
+          data={this.state.data}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item, index}) => (
+          <View style={[styles.row, { backgroundColor: this.newColor( index ) }]}>
+		  	<TouchableHighlight underlayColor="#FF0000" activeOpacity={0.2} onPress={() => this.openURL( item.url )} >
+          		<Text numberOfLines={1} style={styles.itemText}>{item.name}</Text>
+		  	</TouchableHighlight>
+          </View>
+          )}
+          />
+          {this._maybeRenderDevelopmentModeWarning()}
       </View>
     );
   }
 
+  doColor = ( e ) => {
+    var dec = converter.hexToDec( this.colors[0].slice(1) );
+    decNum = parseInt( dec ) - e * 8000;
+    var hex = converter.decToHex( decNum.toString(), { prefix: true } ).toString().replace('0x', '#').toUpperCase();
+    //console.log( this.colors[0] + "=>" + dec + "=>" + decNum + "=>" + hex  );
+	return hex;
+  }
+
+  newColor = ( i ) => { 
+	//return this.colors[ i % this.colors.length];
+	return this.doColor( i );
+  }
+
   _maybeRenderDevelopmentModeWarning() {
       return (
+
 		<ScrollView style={styles.scroll}>			  
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
           CitiGR QA 1
@@ -79,6 +116,10 @@ export default class HomeScreen extends React.Component {
 
   _handleLearnMorePress = () => {
     Linking.openURL("https://catalog.pat.cbgrus.uatglobalrewards.com/apple-gr/pages/login.jsp")
+  }
+
+  openURL = ( url ) => {
+    Linking.openURL( url )
   }
 
 }
