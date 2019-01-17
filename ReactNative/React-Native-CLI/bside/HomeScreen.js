@@ -20,7 +20,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        
           <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -32,11 +32,11 @@ export default class HomeScreen extends React.Component {
             />
           </View>
 
-          <View style={styles.getStartedContainer}>
+          
             {this._maybeRenderDevelopmentModeWarning()}
-          </View>
+          
 
-        </ScrollView>
+        
 
       </View>
     );
@@ -46,35 +46,33 @@ export default class HomeScreen extends React.Component {
       return (
 		<ScrollView style={styles.scroll}>			  
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
+          CitiGR QA 1
         </Text>
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
+          CitiGR QA 2
         </Text>
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
+          CitiGR UAT 1
         </Text>
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
+          CitiGR UAT 2
         </Text>
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
+        CitiGR PAT
         </Text>
        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
+       CitiGR Prod UAT
+        </Text>
+        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
+          CitiGR Prod
+        </Text>
+        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
+          Apple UAT
         </Text>
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
           Apple PAT
         </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
-        </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
-        </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
-        </Text>
+
 		</ScrollView>
       );
   }
@@ -89,7 +87,8 @@ const styles = StyleSheet.create({
   scroll: {
     marginTop: 10,
     flex: 1,
-    height: 800
+    height: 800,
+    backgroundColor: '#000',
   }, 
   container: {
     flex: 1,
@@ -111,15 +110,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   welcomeImage: {
-    width: 100,
-    height: 80,
+    width: 310,
+    height: 70,
     resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+    marginTop: 25,
+    
   },
   getStartedContainer: {
     alignItems: 'center',
-    marginHorizontal: 50,
+    flex: 1,
   },
   homeScreenFilename: {
     marginVertical: 7,
@@ -174,8 +173,11 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   helpLinkText: {
-    fontSize: 30,
+    fontSize: 18,
     color: '#2e78b7',
-    textAlign: 'center',
+    textAlign: 'left',
+    marginLeft: 30,
+    marginTop: 8,
+    marginBottom: 8,
   },
 });
