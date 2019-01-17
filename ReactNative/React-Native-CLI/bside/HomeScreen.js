@@ -2,6 +2,7 @@ import React from 'react';
 import converter from 'hex2dec';
 import {
   Image,
+  TouchableHighlight,
   Platform,
   ScrollView,
   StyleSheet,
@@ -59,8 +60,7 @@ export default class HomeScreen extends React.Component {
 		  	</TouchableHighlight>
           </View>
           )}
-          />
-          {this._maybeRenderDevelopmentModeWarning()}
+          />        
       </View>
     );
   }
@@ -78,46 +78,7 @@ export default class HomeScreen extends React.Component {
 	return this.doColor( i );
   }
 
-  _maybeRenderDevelopmentModeWarning() {
-      return (
-
-		<ScrollView style={styles.scroll}>			  
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          CitiGR QA 1
-        </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          CitiGR QA 2
-        </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          CitiGR UAT 1
-        </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          CitiGR UAT 2
-        </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-        CitiGR PAT
-        </Text>
-       <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-       CitiGR Prod UAT
-        </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          CitiGR Prod
-        </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple UAT
-        </Text>
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Apple PAT
-        </Text>
-
-		</ScrollView>
-      );
-  }
-
-  _handleLearnMorePress = () => {
-    Linking.openURL("https://catalog.pat.cbgrus.uatglobalrewards.com/apple-gr/pages/login.jsp")
-  }
-
+  
   openURL = ( url ) => {
     Linking.openURL( url )
   }
@@ -131,6 +92,14 @@ const styles = StyleSheet.create({
     height: 800,
     backgroundColor: '#000',
   }, 
+  itemText: {
+    padding: 12,
+    fontSize: 15,
+    marginTop: 12,
+    marginBottom: 12,
+    width: 300
+   
+  },
   container: {
     flex: 1,
     backgroundColor: '#000',
@@ -143,18 +112,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 25,
   },
   welcomeContainer: {
     alignItems: 'center',
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   welcomeImage: {
-    width: 310,
+    width: 320,
     height: 70,
     resizeMode: 'contain',
-    marginTop: 25,
+    marginTop: 30,
     
   },
   getStartedContainer: {
@@ -217,7 +186,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#2e78b7',
     textAlign: 'left',
-    marginLeft: 30,
+    marginLeft: 40,
     marginTop: 8,
     marginBottom: 8,
   },
